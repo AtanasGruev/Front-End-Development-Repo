@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+
+    // Зад.1 Имаме масива A = [10, 5, 13, 18, 51].
+    // Да се напише програма, която пбхожда масива и принтира всички числа в конзолата.
+
+    let arrA = [10, 5, 13, 18, 51];
+
+    // Най-удобен начин за обхождане на масив.
+    for (let index in arrA) 
+    {
+        console.log(arrA[index]);
+    }
+
+    // Този начин е подходящ, ако дължината на масива
+    // е предварително известна.
+    for (let i = 0; i < 5; i++)
+    {
+        console.log(arrA[i]);
+    }
+
+    // Зад. 2 По дадения масив А да се върне друг масив B със същата дължина,
+    // но чиито елементи са съответните елементи на А, умножени по 2.
+
+    // .map() методът ще свърши работа.
+    arrA.map(x => x*2);
+
+    // Ако искаме да го отпечатаме или присвоим:
+    let arrB = arrA.map(x => x*2);
+    console.log(arrB);
+
+    // Зад. 3 Създайте програма, която връща филтриран масив,
+    // включващ само четните числа.
+
+    let arrC = arrA.filter(x => x % 2 == 0);
+    console.log(arrC)
+
+    // Зад. 4 Създайте програма, която връща boolean резултат със стойност, 
+    // указваща дали поне един елемент от масив е по-малък от 10.
+
+    // Пишем функция, работеща с произволен масив:
+    function lessThan10(arr)
+    {
+        flag = false; // може flag = new Boolean(false);
+        for (let index in arr)
+        {
+            if (arr[index] < 10)
+            {
+                flag = true;
+                break;
+            }
+        }
+        return flag;
+    }
+
+    console.log(lessThan10(arrA)) // true;
+    console.log(lessThan10(arrB)) // false;
+    console.log(lessThan10(arrC)) //false;
+
+    // Зад. 5 Програма, която търси и връща масив от всички елементи на A,
+    // които са кратни на 3.
+
+    // Ако искаме да разполагаме с view, един .filter() върши работа.
+    arrA.filter(x => x % 3 == 0);
+    console.log(arrA.filter(x => x % 3 == 0));
+
+
+    // Аналогично с цикъл.
+    let arrD = new Array();
+    for (let index in arrA)
+    {
+        if(arrA[index] % 3 == 0) 
+        {
+            arrD.push(arrA[index]);
+        }
+    }
+
+    console.log(arrD);
+
+    // Зад.6 Напишете програма, която събира всички стойности на масива А
+    // чрез използване на Array.prototype.reduce метода.
+
+    arrA.reduce((acc, cur) => acc + cur);
+    console.log(arrA.reduce((acc, cur) => acc + cur))
+
+    // Зад. 7 Създайте програмно нов масив, който съдържа последните два
+    // елемента на A.
+
+    // Много странно - хвърля грешка arrA is not defined.
+    // Все пак очевидно това е решение.
+    
+    //let arrE = arrА.slice(-2);
+    //console.log(arrE);
+
+    //------------------------------------------------------------------
+    // Задачи върху JavaScript Date API.
+    //------------------------------------------------------------------
+
+    // Зад. 2.1 - В масив добавете текущата дата.
+    // Зад. 2.2 - Да се добави в масива и 08.12.2018 г., с променен час 21:00:00.
+
+    // Това ще добави цялата информация за текущата дата
+    // в масива.
+    let dateArr= [];
+
+    let today = new Date();
+    var anotherDay = new Date("2018-12-08 21:00:00");
+
+    dateArr.push(today);
+    dateArr.push(anotherDay);
+    console.log(dateArr);
+
+    // Зад 2.3. - във втори масив да се добавят данни за
+    // броят дни и вид ден (понеделник, вторник, ...) на датите от първия масив.
+
+    // Помощна функция, която връща двойка [брой_дни_в_месеца, вид_на_деня]
+    function getDaysCountAndType (date)
+    {
+        let countDays = 0;
+
+        switch(date.getMonth())
+        {
+            case 0:
+            case 2:
+            case 4:
+            case 6:
+            case 7:
+            case 9:
+            case 11: countDays = 31; break;
+            case 3:
+            case 5:
+            case 8:
+            case 10: countDays = 30; break;
+            case 1: countDays = 28; break;
+            default: break; 
+        }
+
+        let typeDay = date.getDay();
+
+        return [countDays, typeDay];
+    }
+
+    // Добавяме данните във втори масив
+    let countDaysArr = []
+    countDaysArr.push(getDaysCountAndType(today))
+    countDaysArr.push(getDaysCountAndType(anotherDay))
+    console.log(countDaysArr);
+
+    // Зад. 2.4. - да се форматират по подходящ начин данните от двата масива, а 
+    // резултатът да се "обедини" в трети.
+
+    // Ще използваме асоциативен масив за дните (тъй като във втория масив
+    // вече имаме числови идентификатори).
+    enumWeek = 
+    {
+        "0" : "неделя",
+        "1" : "понеделник",
+        "2" : "вторник",
+        "3" : "сряда",
+        "4" : "четвъртък",
+        "5" : "петък",
+        "6" : "събота"
+    }
+
+    // Концепцията за двата стринга е една и съща. Внимаваме с whitespace при конкатенация.
+    // ВАЖНО - за да има водеща "0" навсякъде, където е необходимо, добавяме я (алгоритъмът за конвертиране
+    // влиза в действие тук ;) и ползваме .slice(-2), за да вземем само последните 2 символа. Ясно е, че ако
+    // има нужда от водеща нула, тя ще бъде взета. Останалото е прилагане на необходимите гетъри.
+
+    var firstDate = "Дата: " + ("0" + dateArr[0].getDate()).slice(-2) + "." + ("0" + dateArr[0].getMonth()).slice(-2) + "." +
+    dateArr[0].getFullYear() + "г., час: " + ("0" + dateArr[0].getHours()).slice(-2) + ":" + ("0" + dateArr[0].getMinutes()).slice(-2) +
+        ":" + ("0" + dateArr[0].getSeconds()).slice(-2) + ", " + enumWeek[countDaysArr[0][1]] + ", " + countDaysArr[0][0] + " дни.";
+
+    console.log(firstDate);
+
+    var secondDate = "Дата: " + ("0" + dateArr[1].getDate()).slice(-2) + "." + ("0" + dateArr[1].getMonth()).slice(-2) + "." + 
+        dateArr[1].getFullYear() + "г., час: " + ("0" + dateArr[1].getHours()).slice(-2) + ":" + ("0" + dateArr[1].getMinutes()).slice(-2) +
+        ":" + ("0" + dateArr[1].getSeconds()).slice(-2) + ", " + enumWeek[countDaysArr[1][1]] + ", " + countDaysArr[1][0] + " дни.";
+
+    console.log(secondDate);
+
+    let formatedArr = [];
+    formatedArr.push(firstDate);
+    formatedArr.push(secondDate);
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
+
