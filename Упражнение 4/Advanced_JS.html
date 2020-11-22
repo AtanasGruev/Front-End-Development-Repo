@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script >
+
+        // Задача 1:
+        // Поправете кода така, че и двете console.log да принтират числото 1000.
+
+        var person = {
+            _salary: 1000,
+            getSecretSalaryInfo: function (){
+                return this._salary;
+            }
+        };
+
+        // На променливата трявба да присвоим резултата от 
+        // извикването на метода, което правим с person.getSecretSalaryInfo().
+        // Скобите са от значение.
+        var stoleSalaryInfo = person.getSecretSalaryInfo();
+
+        console.log(person.getSecretSalaryInfo());
+        console.log(stoleSalaryInfo);
+
+        // Задача 2:
+        // Създайте клас Person с две свойства: 
+        // 1) "name" - различно за всяка инстанция 
+        // 2) "planet" = "Земя" - общо за всяка инстанция
+        // Конструкторът да приема само един параметър - "Name"
+
+        // Добавете функция, която принтира "Здравей [Чък Норис] от планетата [Земя]"
+        // Направете три инстанции на обекта и извикайте функцията.
+
+        class Person {
+            constructor(Name) {
+                this.name = Name;
+                this.planet = "Земя";
+            }
+
+            // Правилна функционалност
+            printInfo(){
+                return `Здравей [${this.name}] от планетата [${this.planet}]`;
+            }
+
+            // Функционалност специално за Чък Норис
+            printNorris() {
+                return `Здравей [Чък Норис] от планетата [${this.planet}]`;
+            }
+        };
+
+        person_john = new Person("Джон Сноу");
+        person_james = new Person("Джеймс Бонд");
+        person_chuck = new Person("Чък Норис");
+        person_chuck.printInfo();
+        person_john.printNorris();
+
+        // Задача 3: 
+        // Да се създаде клас Item с две свойства - име и отстъпка (в проценти).
+        // Нека основната цена е 1000 и тя се връща от метод на прототипа.
+        // Създайте метод на инстанцията, който изчислява цената, базирано на основната цена,
+        // прилагайги към нея дадената отстъпка.
+
+        class Item {
+            constructor(itemName, itemDiscount) {
+                this.name = itemName;
+                this.discount = itemDiscount;
+            }
+
+            applyDiscount(regularPrice) {
+                return "New price after discount is: " +  (1-this.discount) * regularPrice;
+            }
+
+            applyDiscountAgain() {
+                var regularPrice = Item.prototype.returnRegular();
+                return "New price after discounts is: " + (1 - this.discount) * regularPrice;
+            }
+        };
+
+        Item.prototype.regularPrice = function() {console.log(`Regular price is: 1000`)};
+        Item.prototype.returnRegular = function() {return 1000};
+
+        // Задача 4: 
+        // С помощта на closure и клас, направете задача 1, така че _sallary да е наистина
+        // private.
+
+        class PersonClass {
+
+            getSalary() {
+                function getSecretSalaryInfo() {
+                    let _salary = 100;
+                    return _salary;
+                }
+
+                return getSecretSalaryInfo();
+            }
+        };
+
+        // Задачи 5, 6, 7 са 
+
+        // Задача 8*: 
+
+        // 	Условие:
+        // 	Напишете три класа, които отговарят на следната UML диаграма: 
+        // 		1.	PaymentMethod – клас, който трябва да има само един метод, който return-ва string: "Your amount in the account is: "
+        // 		2.	CashMethod – наследява PaymentMethod и има:
+        // 			a.	Наистина private property amount, което не може да бъде достъпвано директно от инстанцията. 
+        // 			b.	Public method addToAmount, който добавя стойност към private property-то
+        // 			c.	Public method reduceFromAmount, който изважда стойност от private property-то
+        // 			d.	Public method getAmount, който извиква родителския getAmount и в края добавя стойността от private property-то към текущия стринг
+        // 		3.	CreditMethod – наследява PaymentMethod и има:
+        // 			a.	Наистина private property amount, което не може да бъде достъпвано директно от инстанцията. 
+        // 			b.	Public method addToAmount, който добавя 90% от подадената стойност към private property-то 
+        // 			c.	Public method reduceFromAmount, който изважда стойност от private property-то
+        // 			d.	Public method getAmount, който извиква родителския getAmount и в края добавя стойността от private property-то към текущия стринг
+
+        // 		Пример за използване на класовете:
+        // 		const cashAccount = new CashMethod();
+        // 		cashAccount.getAmount(); // returns “Your amount in the account is: 0”
+        // 		cashAccount.addToAmount(100); // returns cashAccount instance (useful for method chaining)
+        // 		cashAccount.addToAmount(20).addToAmount(30).reduceFromAmount(10); // returns cashAccount instance (useful for method chaining)
+        // 		cashAccount.getAmount(); // returns “Your amount in the account is: 140”
+
+        // 		const creditAccount = new CreditMethod();
+        // 		creditAccount.addToAmount(100); // returns creditAccount instance (useful for method chaining)
+        // 		creditAccount.getAmount(); // returns “Your amount in the account is: 90”;
+
+        // 		В публичния interface на класовете не е разрешено да има нищо друго освен описаните методи и всички наследени от Object.
+
+        class PaymentMethod {
+            getAmount() {
+                return "Your amount in the account is: "
+            }
+        };
+
+        class CashMethod extends PaymentMethod {
+
+            //a. Наистина private property amount, което не може да бъде достъпвано директно от инстанцията. 
+            constructor(amountValue=0) {
+                super();
+                let _amount = amountValue;
+
+                //b. Public method addToAmount, който добавя стойност към private property-то.
+                this.addToAmount = (value) => {
+                    _amount += value;
+                    return this;
+                },
+
+                //c. Public method reduceFromAmount, който изважда стойност от private property-то
+                this.reduceFromAmount = (value) => {
+                    _amount -= value;
+                    return this;
+                },
+
+                //d. Public method getAmount, който извиква родителския getAmount и в края добавя
+                // стойността от private property-то към текущия стринг
+                this.getAmount = () => {
+                    return super.getAmount() + _amount;
+                }
+                
+            }
+        }
+
+        class CreditMethod extends PaymentMethod {
+
+            //a. Наистина private property amount, което не може да бъде достъпвано директно от инстанцията. 
+            constructor(amountValue=0) {
+                super();
+                let _amount = amountValue;
+
+                // b. Public method addToAmount, който добавя 90% от подадената стойност към private property-то 
+                this.addToAmount = (value) => {
+                    _amount += 0.9 * value;
+                    return this;
+                },
+
+                //c. Public method reduceFromAmount, който изважда стойност от private property-то
+                this.reduceFromAmount = (value) => {
+                    _amount -= value;
+                    return this;
+                },
+
+                //d. Public method getAmount, който извиква родителския getAmount и в края добавя
+                // стойността от private property-то към текущия стринг
+                this.getAmount = () => {
+                    return super.getAmount() + _amount;
+                }   
+            }
+        }
+        
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
