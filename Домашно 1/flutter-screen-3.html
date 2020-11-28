@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <title>Front-End HW1 (Flutter Design, Screen 3)</title>
+        <link rel="stylesheet" href="flutter-styles-3.css">
+
+        <script src="https://kit.fontawesome.com/e38399874e.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="root">
+            <header class="header">
+                <h1 class="flutter-heading"> Flutter </h1>
+                <div class="flutter-searchfield">
+                    <input class="searchfield" name="searchfield" placeholder="Search" type="text">
+                    <img class="fa-search" src="./search-solid.svg" alt="search-solid">
+                </div>
+            </header>
+
+            <main class="main-content">
+                <aside class="profile">
+                    <div class="photo-name">
+                        <img class="fa-user-circle" src="./user-circle-solid.svg" alt="user-circle-solid">
+                        <h2> Atanas Gruev </h2>
+                    </div>
+                    <div class="info-logout">
+                        <ul class="info-logout-list">
+                            <li>
+                                <div class="posts">
+                                    <h4> Posts </h4>
+                                    <h1> 1 </h1>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="reaction">
+                                    <h4> Reactions </h4>
+                                    <h1> 7 </h1>
+                                </div>
+                            </li>
+                            <li>
+                                <button class="logout-button"> Log Out </button>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+                <section class="feed">
+                    <div class="comment">
+                        <img class="fa-user-circle-comment" src="./user-circle-solid.svg" alt="user-circle-solid">
+                        <div class="flutter-say-something">
+                            <input class="say-something" name="say-something" placeholder="Say something" type="text">
+                            <img class="fa-comment-alt" src="./fa-comment-alt.png" alt="comment-alt">
+                        </div>
+                    </div>
+                    <div class="first-post">
+                        <div class="post-photo">
+                            <img class="fa-user-circle-first-post" src="./user-circle-solid.svg" alt="user-circle-solid">
+                        </div>
+                        <div class="comment-content">
+                            <div class="name-time">
+                                <h3> Ivan Ivanov </h3>
+                                <ul>
+                                    <span style="position: relative; left: -1.5rem;"> <li> <span> 0 seconds ago </span> </li> </span>
+                                </ul>
+                                <img class="fa-times-solid" src="./times-solid.svg" alt="times-solid">
+                            </div>
+                            <div class="post-text">
+                                <p> Donec placerat sagittis ipsum non ultrices. Etiam venenatis ultrices tellus eu aliquam.
+                                    In hac habitasse platea dictumst. Fusce commodo pharetra ipsum. Ut luctus elementum orci,
+                                    at vehicula magna faucibus eget. Mauris tincidunt nulla vitae ipsum pharetra condimentum.
+                                    Sed mollis viverra enim. Nunc porttitor quam eget felis vehicula faucibus.
+                                </p>
+                            </div>
+                            <div class="likes-dislikes">
+                                <ul>
+                                    <li> <img src="./thumbs-up-regular.svg" alt="thumbs-up"> </li>
+                                    <li> <span> 5 </span> </li>
+                                    <li> <img src="./thumbs-down-regular.svg" alt="thumbs-down"> </li>
+                                    <li> <span> 3 </span> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="second-post">
+                        <div class="post-photo">
+                            <img class="fa-user-circle-first-post" src="./user-circle-solid.svg" alt="user-circle-solid">
+                        </div>
+                        <div class="comment-content">
+                            <div class="name-time">
+                                <h3> Atanas </h3>
+                                <ul>
+                                    <span style="position: relative; left: -1.5rem;"> <li> <span> Last month </span> </li> </span>
+                                </ul>
+                                <img class="fa-times-solid" src="./times-solid.svg" alt="times-solid">
+                            </div>
+                            <div class="post-text">
+                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tortor nisl, iaculis suscipit lacus vel,
+                                    cursus tempor nunc. Vestibulum vestibulum placerat quam, a laoreet tellus semper eget.
+                                </p>
+                            </div>
+                            <div class="likes-dislikes">
+                                <ul>
+                                    <li> <img src="./thumbs-up-regular.svg" alt="thumbs-up"> </li>
+                                    <li> <span> 3 </span> </li>
+                                    <li> <img src="./thumbs-down-regular.svg" alt="thumbs-down"> </li>
+                                    <li> <span> 0 </span> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </body>
+</html>

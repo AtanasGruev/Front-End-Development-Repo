@@ -1,0 +1,410 @@
+html {
+    background: linear-gradient(-100deg, #A2F2F1 0%, #B19AFE 100%) fixed;
+}
+
+body {
+    margin: 0;
+    font-size: 16px;
+}
+
+* {
+    font-family: Helvetica, sans-serif;
+}
+
+#root {
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background-color: white;
+}
+
+.header .flutter-heading {
+    margin: 0 5%;
+}
+
+.header .flutter-searchfield {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0.5rem 5%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    height: 2rem;
+    width: 14rem;
+    outline: none;
+    border: none;
+
+    background-color: #F5F6FE;
+    border-radius: 20px;
+    text-align: left;
+}
+
+.flutter-searchfield .searchfield {
+    border: 0;
+    outline: 0;
+    width: 100%;
+    justify-self: flex-start;
+    background-color: inherit;   
+}
+
+.flutter-searchfield .fa-search {
+    width: 1rem;
+    align-self: center;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.main-content .profile {
+    max-width: 18rem;
+    width: 18rem;
+    height: fit-content;
+    margin-top: 0.75rem;
+    margin-right: 0.375rem;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+
+    background-color: white;
+}
+
+.profile .fa-user-circle{
+    display: block;
+    margin: 1rem auto;
+    width: 60%;
+    align-self: center;
+}
+
+.profile h2 {
+    font-weight: 500;
+}
+
+.profile .info-logout {
+    background-color: #F6F7FD;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.profile .info-logout ul li div {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile .info-logout ul li div h1 {
+    margin: 0.1rem;
+    color: #52BCD5;
+}
+
+.profile .info-logout ul li div h4 {
+    margin: 0.1rem;
+    color: #848694;
+}
+
+.profile .info-logout ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.profile .info-logout ul li {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.profile .info-logout ul li:last-child {
+    margin-left: auto;
+    align-self: center;
+}
+
+.profile .info-logout .logout-button {
+    border-radius: 2rem;
+    height: 2rem;
+    background-color: #F6F7FD;
+    color: #52BCD5;
+    border-style: solid;
+    border-color: #52BCD5;
+    font-weight: bold;
+}
+
+.feed {
+    display: flex;
+    flex-direction: column;
+    max-width: 55rem;
+    width: 36rem;
+    margin-top: 0.75rem;
+    margin-left: 0.375rem;
+}
+
+.feed .comment {
+    display: flex;
+    height: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #F4FCFD;
+
+    border-bottom: 2px solid #E5EAEA;
+}
+
+.feed .comment .fa-user-circle-comment {
+    margin-left: 0.75rem;
+    width: 7%;
+}
+
+.feed .comment .flutter-say-something {
+    box-sizing: content-box;
+    display: flex;
+    align-self: center;
+
+    margin: 0.5rem 3%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 2.2rem;
+
+    border: 2px solid #ECEFFD;
+    border-radius: 24px;
+}
+
+.feed .comment .flutter-say-something .say-something {
+    border: 0;
+    outline: 0;
+    width: 26rem;
+    text-align: left;
+}
+
+.feed .comment .flutter-say-something .say-something::placeholder {
+    color: #52BDD6;
+    font-weight: bolder;
+}
+
+.feed .comment .flutter-say-something .fa-comment-alt {
+    width: 4%;
+    color: #52BDD6;
+    align-self: center;
+}
+
+.feed .first-post,
+.feed .second-post {
+    display: flex;
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+    border-bottom: 2px solid #ECEFFD;
+    background-color: white;
+}
+
+.feed .first-post .post-photo,
+.feed .second-post .post-photo{
+    display: flex;
+    margin-right: 1rem;
+    height: 5.5rem;
+    align-content: flex-start;
+    justify-content: flex-end;
+}
+
+.feed .first-post .post-photo img,
+.feed .second-post .post-photo img {
+    width: 3.2rem;
+}
+
+.feed .first-post .comment-content .name-time,
+.feed .second-post .comment-content .name-time {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    height: 1.5rem;
+    width: 29rem;
+}
+
+.feed .first-post .comment-content .name-time * ,
+.feed .second-post .comment-content .name-time * {
+    margin: 0;
+    margin-top: inherit;
+}
+
+.feed .first-post .comment-content .name-time ul li,
+.feed .second-post .comment-content .name-time ul li {
+    margin: 0.75rem;
+    color: #91939F;
+}
+
+.feed .first-post .comment-content .name-time ul li span,
+.feed .second-post .comment-content .name-time ul li span {
+    position: relative;
+    left: -0.4rem;
+}
+
+.feed .first-post .comment-content .name-time .fa-times-solid,
+.feed .second-post .comment-content .name-time .fa-times-solid {
+    width: 2.5%;
+    margin-left: auto;
+}
+
+.feed .first-post .comment-content .post-text,
+.feed .second-post .comment-content .post-text {
+    margin-right: 2rem;
+}
+
+.feed .first-post .comment-content .likes-dislikes,
+.feed .second-post .comment-content .likes-dislikes {
+    display: flex;
+}
+
+.feed .first-post .comment-content .likes-dislikes ul,
+.feed .second-post .comment-content .likes-dislikes ul {
+    display: flex;
+    margin-top: 0.5rem;
+    padding: 0;
+    list-style: none;
+}
+
+.feed .first-post .comment-content .likes-dislikes ul li span,
+.feed .second-post .comment-content .likes-dislikes ul li span {
+    margin-left: 0.5rem;
+    margin-right: 3rem;
+}
+
+.feed .first-post .comment-content .likes-dislikes ul li img,
+.feed .second-post .comment-content .likes-dislikes ul li img {
+    height: 90%;
+}
+
+@media screen and (max-width: 890px){
+    .header .flutter-heading {
+        margin-bottom: 0.5rem;
+    }
+
+    .header .flutter-searchfield {
+        box-sizing: content-box;
+        margin-left: auto;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 0;
+        width: 100%;
+        max-width: 10rem;
+    }
+
+    .header .flutter-searchfield .searchfield {
+        width: 80%;
+    }
+
+    .header .flutter-searchfield .searchfield:first-child {
+        justify-self: flex-start;
+    }
+
+    .header .flutter-searchfield .fa-search {
+        width: 1rem;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin: auto;
+        width: 90%;
+        max-width: 90%;
+    }
+
+    .main-content .profile {
+        box-sizing: content-box;
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .main-content .profile .info-logout {
+        display: flex;
+        align-items: center;
+        height: 3.75rem;
+    }
+
+    .main-content .profile .info-logout ul {
+        width: inherit;
+    }
+
+    .main-content .profile .info-logout ul .posts h4,
+    .main-content .profile .info-logout ul .reaction h4 {
+        font-size: 0.75rem;
+    }
+
+    .main-content .profile .info-logout ul .posts h1,
+    .main-content .profile .info-logout ul .reaction h1 {
+        font-size: 1.125rem;
+    }
+
+    .main-content .feed {
+        margin: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .main-content .feed .comment {
+        display: flex;
+        justify-content: space-between;
+        height: 3rem;
+        max-width: 100%;
+    }
+
+    .main-content .feed .comment .fa-user-circle-comment {
+        width: 2rem;
+        margin-left: 0.5rem;
+    }
+
+    .main-content .feed .comment .flutter-say-something {
+        box-sizing: content-box;
+        margin-left: auto;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 1rem;
+        background-color: white;
+        max-width: 65%;
+        width: auto;
+    }
+
+    .main-content .feed .comment .flutter-say-something .say-something {
+        max-width: 90%;
+    }
+
+    .main-content .feed .comment .flutter-say-something .fa-comment-alt {
+        width: 1rem;
+    }   
+    
+    .main-content .feed .first-post,
+    .main-content .feed .second-post {
+        min-height: 7rem;
+        padding: 1rem;
+        font-size: 0.875rem;
+    }
+
+    .main-content .feed .first-post .comment-content .name-time,
+    .main-content .feed .second-post .comment-content .name-time {
+        width: auto;
+    }
+
+    .main-content .feed .first-post .comment-content .name-time h3,
+    .main-content .feed .second-post .comment-content .name-time h3 {
+        font-size: 16px;
+    }
+
+    .main-content .feed .first-post .comment-content .name-time .fa-times-solid,
+    .main-content .feed .second-post .comment-content .name-time .fa-times-solid {
+        width: 0.5rem;
+    }
+
+    .main-content .feed .second-post {
+        margin-bottom: 2rem;
+    }
+}
